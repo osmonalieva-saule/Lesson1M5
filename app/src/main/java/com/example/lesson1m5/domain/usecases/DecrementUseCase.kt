@@ -1,10 +1,10 @@
 package com.example.lesson1m5.domain.usecases
 
 import com.example.lesson1m5.domain.repository.CounterRepository
-import javax.inject.Inject
 
-class DecrementUseCase @Inject constructor (
+
+class DecrementUseCase(
     private val counterRepository: CounterRepository,
     ){
-        fun decrement()= counterRepository.decrement()
+        operator fun invoke()= counterRepository.decrement()
 }

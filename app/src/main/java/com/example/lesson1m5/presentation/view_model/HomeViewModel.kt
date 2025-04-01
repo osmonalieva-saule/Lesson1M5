@@ -7,33 +7,26 @@ import com.example.lesson1m5.domain.model.CounterEntity
 import com.example.lesson1m5.domain.usecases.DecrementUseCase
 import com.example.lesson1m5.domain.usecases.GetCountUseCase
 import com.example.lesson1m5.domain.usecases.IncrementUseCase
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
-@HiltViewModel
-class HomeViewModel @Inject constructor(
+class HomeViewModel(
     private val incrementUseCase: IncrementUseCase,
     private val decrementUseCase: DecrementUseCase,
     private val getCountUseCase: GetCountUseCase
 ) : ViewModel() {
-    private val _counter = MutableLiveData<
-            CounterEntity>()
-    val counter: LiveData<
-            CounterEntity> = _counter
+    private val _counter = MutableLiveData(getCountUseCase())
+    val counter: LiveData<CounterEntity> = _counter
 
     fun increment() {
-        incrementUseCase.increment()
-        _counter.value = getCountUseCase.getCount()
+        incrementUseCase()
+        getCounter()
     }
 
     fun decrement() {
-        decrementUseCase.decrement()
-        _counter.value = getCountUseCase.getCount()
+        decrementUseCase()
+        getCounter()
     }
 
-    fun getCounter() {
-        _counter.value = getCountUseCase.getCount()
+    private fun getCounter() {
+        _counter.value = getCountUseCase()
     }
-
-
 }

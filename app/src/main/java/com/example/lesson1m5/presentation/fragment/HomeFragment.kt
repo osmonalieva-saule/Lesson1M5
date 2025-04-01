@@ -5,16 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import com.example.lesson1m5.R
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.example.lesson1m5.databinding.FragmentBlankBinding
 import com.example.lesson1m5.presentation.view_model.HomeViewModel
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
+
 class HomeFragment : Fragment() {
 
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModel()
 
     private var _binding: FragmentBlankBinding? = null
     private val binding get() = _binding!!
@@ -29,7 +27,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getCounter()
+        //viewModel.getCounter()
         viewModel.counter.observe(viewLifecycleOwner) {
             binding.tvResult.text = it.count.toString()
         }

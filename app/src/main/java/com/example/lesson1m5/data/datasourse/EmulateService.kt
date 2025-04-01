@@ -1,9 +1,9 @@
 package com.example.lesson1m5.data.datasourse
 
 import com.example.lesson1m5.data.model.CounterDto
-import javax.inject.Inject
 
-class EmulateService @Inject constructor() {
+
+class EmulateService() {
    private var count = 0
     private var isIncrement = false
     fun increment() {
