@@ -64,5 +64,13 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.koin.android)
-    
+
+
+
+    dependencies {
+        implementation(libs.retrofit)
+        implementation(libs.converter.gson)
+        implementation(libs.okhttp)
+        implementation(libs.logging.interceptor)
+    }
 }
